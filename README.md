@@ -12,7 +12,7 @@ It is designed for Coincashew installation.
 Cardano Node setup with Coincashew Guide : https://www.coincashew.com/coins/overview-ada/guide-how-to-build-a-haskell-stakepool-node)
 
 # How to use
-simply run the script 
+simply run the script on your Block Producer Node
 ```shell
 ./rotateKES.sh
 ```
