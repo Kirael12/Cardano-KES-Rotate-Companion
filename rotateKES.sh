@@ -23,7 +23,7 @@ echo " | . \| |____ ____) | | | \ \| |__| | | |/ ____ \| |  | |____ ";
 echo " |_|\_\______|_____/  |_|  \_\\____/  |_/_/    \_\_|  |______|";
 echo "                                                              ";
 echo
-echo "v2.0.0"
+echo "v3.0.0"
 echo "by FRADA stake pool"
 echo
 echo "#################################################################################"
@@ -31,7 +31,7 @@ echo "KES rotation companion script for cardano node installation with Coincashe
 echo "#################################################################################"
 echo
 echo "This companion script will help you rotate your KES keys and generate"
-echo "a new node certificate. It is designed for a Coincashew installation"
+echo "a new node certificate"
 echo 
 echo "Tested for Ubuntu 22.04.2 LTS"
 echo
@@ -51,7 +51,7 @@ echo
 sleep 1
 cardano-cli query kes-period-info --mainnet --op-cert-file $NODE_HOME/node.cert
 echo
-KES_PERIOD_OUTPUT=$(cardano-cli query kes-period-info --mainnet --op-cert-file $NODE_HOME/node.cert)
+KES_PERIOD_OUTPUT=$(cardano-cli conway query kes-period-info --mainnet --op-cert-file $NODE_HOME/node.cert)
 EXPIRY_DATE=$(echo $KES_PERIOD_OUTPUT | grep -oP '"qKesKesKeyExpiry": "\K[^"]+')
 EXPIRY_TIMESTAMP=$(date -d "$EXPIRY_DATE" +%s)
 CURRENT_TIMESTAMP=$(date +%s)
@@ -189,7 +189,7 @@ echo "---------------------------------------------------------------------"
 echo
 sleep 2
 
-slotNo=$(cardano-cli query tip --mainnet | jq -r '.slot')
+slotNo=$(cardano-cli conway query tip --mainnet | jq -r '.slot')
 slotsPerKESPeriod=$(cat $NODE_HOME/shelley-genesis.json | jq -r '.slotsPerKESPeriod')
 kesPeriod=$((${slotNo} / ${slotsPerKESPeriod}))
 StartingKESPeriod=${kesPeriod}
@@ -221,7 +221,7 @@ echo " 4- Copy your new node.cert to your cardano home directory on your Block P
 echo " 5- Restart your block producer"
 echo " 6- Check if your new OP certificate is OK :"
 echo
-echo -e "\e[0;37mcardano-cli query kes-period-info --mainnet --op-cert-file \$NODE_HOME/node.cert\e[0m"
+echo -e "\e[0;37mcardano-cli conway query kes-period-info --mainnet --op-cert-file \$NODE_HOME/node.cert\e[0m"
 echo
 echo " 7- Backup your new KES keys and node.cert files on a secured cold storage"
 echo
