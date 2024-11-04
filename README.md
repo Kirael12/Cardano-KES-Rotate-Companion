@@ -1,6 +1,6 @@
 # Cardano-KES-Rotate-Companion
 This script helps Pool Operator with KES Rotation and Operational Certificate generation.
-It is designed for Coincashew installation.
+It is designed for Coincashew installation. 
 
 # What it does
 - Check KES period and counter on chain
@@ -25,6 +25,9 @@ simply run the script on your Block Producer Node
 ```
 
 # Changelog
+v3.0.0 (november 2024)
+- New conway syntax for cardano-cli queries
+
 v2.0.0
 
 - Add KES period calculation and alerts
