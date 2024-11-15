@@ -23,7 +23,7 @@ echo " | . \| |____ ____) | | | \ \| |__| | | |/ ____ \| |  | |____ ";
 echo " |_|\_\______|_____/  |_|  \_\\____/  |_/_/    \_\_|  |______|";
 echo "                                                              ";
 echo
-echo "v3.0.0"
+echo "v3.0.1"
 echo "by FRADA stake pool"
 echo
 echo "#################################################################################"
@@ -210,12 +210,7 @@ echo " 2- Double check your node.counter on your air-gapped machine and adjust i
 echo -e " 3- Generate your new OP certificate ON YOUR AIR-GAPPED MACHINE with your new kes.vkey: "
 echo
 echo -e "\e[0;37mcd \$NODE_HOME"
-echo -e "cardano-cli node issue-op-cert \ "
-echo -e "   --kes-verification-key-file kes.vkey \ "
-echo -e "   --cold-signing-key-file \$HOME/cold-keys/node.skey \ "
-echo -e "   --operational-certificate-issue-counter \$HOME/cold-keys/node.counter \ "
-echo -e "   --kes-period ${StartingKESPeriod} \ "
-echo -e "   --out-file node.cert\e[0m"
+echo -e "cardano-cli node issue-op-cert --kes-verification-key-file kes.vkey --cold-signing-key-file \$HOME/cold-keys/node.skey --operational-certificate-issue-counter \$HOME/cold-keys/node.counter --kes-period ${StartingKESPeriod} --out-file node.cert\e[0m"
 echo
 echo " 4- Copy your new node.cert to your cardano home directory on your Block Producer and chmod 400 it"
 echo " 5- Restart your block producer"
